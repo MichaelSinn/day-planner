@@ -1,8 +1,15 @@
+/* 
+TODO: 
+    - Wireframe
+    - README.md
+*/
+
+
 const hoursTableEl = $("#hours");
 
 let currentTime = moment();
 
-let currentDay = moment().format("Do MMM, YYYY");
+let currentDay = moment().format("dddd, MMMM Do");
 $("#currentDay").text(currentDay);
 
 let schedule = {
@@ -24,6 +31,7 @@ if (!localStorage.getItem("schedule")){
 }
 
 let timer = setInterval(function(){
+    currentTime = moment();
     for (let i = 0; i < 9; i ++){
         let tableRow = $(`#row${i}`);
         tableRow.removeClass("past");
@@ -37,7 +45,7 @@ let timer = setInterval(function(){
             tableRow.addClass("past");
         }
     }
-}, 1000);
+}, 10000);
 
 for (let i = 0; i < 9; i++){
     let timeBlock = $("<tr>");
